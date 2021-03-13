@@ -27,7 +27,7 @@ pipeline{
 			steps{
 				script{
 					bat '''
-					kubectl apply -f deployments\\deployment.yaml
+					kubectl apply -f kubernetes\\deployments\\deployment.yaml
 					'''
 				}
 			}
