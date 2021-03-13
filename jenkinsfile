@@ -11,8 +11,8 @@ pipeline{
 				script{
 					bat '''
 					cd C:\\Users\\rselc\\Desktop\\Works\\k8s
-					docker-compose build python 
 					'''
+					dockerImage = docker.build imagename
 				}
 			}
 		}

@@ -1,9 +1,0 @@
-version: "3.4"
-services:
-  python:
-    build:
-      context: .
-    container_name: python
-    image: rskaradag/python:latest
-    ports:
-    - 5000:5000
