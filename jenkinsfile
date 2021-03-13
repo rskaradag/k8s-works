@@ -1,7 +1,8 @@
 pipeline{
 	 environment {
-    	registry = "rskaradag/python"
+    	imagename = "rskaradag/python"
     	registryCredential = 'rsk-dockerhub'
+    	dockerImage = ''
   	}
 	agent any
 	stages{
@@ -19,7 +20,8 @@ pipeline{
 			steps{
 				script{
 					docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-							dockerImage.push("python")
+							dockerImage.push("$BUILD_NUMBER")
+							dockerImage.push('latest')
 						}
 				}
 			}

@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: mycase-app
-        image: rskaradag/python:v2
+        image: rskaradag/python:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
