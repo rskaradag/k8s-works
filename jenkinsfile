@@ -1,1 +1,16 @@
-hello
+pipeline{
+
+	stages{
+		stage("check"){
+			steps{
+				script{
+					bat '''
+					cd
+					dir
+					'''
+				}
+			}
+		}
+	}
+
+}
