@@ -9,9 +9,6 @@ pipeline{
 		stage("Build"){
 			steps{
 				script{
-					bat '''
-					cd C:\\Users\\rselc\\Desktop\\Works\\k8s
-					'''
 					dockerImage = docker.build imagename
 				}
 			}
@@ -30,7 +27,7 @@ pipeline{
 			steps{
 				script{
 					bat '''
-					kubectl apply -f Desktop\\Works\\k8s\\kubernetes\\deployments\\deployment.yaml
+					kubectl apply -f deployments\\deployment.yaml
 					'''
 				}
 			}
