@@ -4,6 +4,6 @@ services:
     build:
       context: .
     container_name: python
-    image: rskaradag/python:v1.2
+    image: rskaradag/python:v2
     ports:
     - 5000:5000
