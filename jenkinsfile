@@ -1,18 +1,28 @@
 pipeline{
 	agent any
 	stages{
-		stage("build"){
+		stage("Build"){
 			steps{
 				script{
 					bat '''
 					cd C:\\Users\\rselc\\Desktop\\Works\\k8s
 					docker-compose build python
-					docker-compose push python
+					whoami
 					'''
 				}
 			}
 		}
-		stage("deploy"){
+		stage("Push"){
+			steps{
+				script{
+					docker.withRegistry( 'https://registry.hub.docker.com', 'rsk-dockerhub' ) {
+							dockerImage.push("$BUILD_NUMBER")
+							dockerImage.push('latest')
+						}
+				}
+			}
+		}
+		stage("Deploy"){
 			steps{
 				script{
 					bat '''
