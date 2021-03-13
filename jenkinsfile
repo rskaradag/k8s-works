@@ -1,4 +1,8 @@
 pipeline{
+	 environment {
+    	registry = "rskaradag/python"
+    	registryCredential = 'rsk-dockerhub'
+  	}
 	agent any
 	stages{
 		stage("Build"){
@@ -6,8 +10,7 @@ pipeline{
 				script{
 					bat '''
 					cd C:\\Users\\rselc\\Desktop\\Works\\k8s
-					docker-compose build python
-					whoami
+					docker-compose build python 
 					'''
 				}
 			}
@@ -15,9 +18,8 @@ pipeline{
 		stage("Push"){
 			steps{
 				script{
-					docker.withRegistry( 'https://registry.hub.docker.com', 'rsk-dockerhub' ) {
-							dockerImage.push("$BUILD_NUMBER")
-							dockerImage.push('latest')
+					docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+							dockerImage.push("python")
 						}
 				}
 			}
