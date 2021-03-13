@@ -1,12 +1,22 @@
 pipeline{
 	agent any
 	stages{
-		stage("check"){
+		stage("build"){
 			steps{
 				script{
 					bat '''
-					cd
-					dir
+					cd C:\\Users\\rselc\\Desktop\\Works\\k8s
+					docker-compose build python
+					docker-compose push python
+					'''
+				}
+			}
+		}
+		stage("deploy"){
+			steps{
+				script{
+					bat '''
+					kubectl apply -f Desktop\\Works\\k8s\\kubernetes\\deployments\\deployment.yaml
 					'''
 				}
 			}
