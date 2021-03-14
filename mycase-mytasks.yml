@@ -1,0 +1,13 @@
+- hosts: testvm
+  remote_user: kubespray
+  tasks:
+    - name: remove it if exists
+      lineinfile:
+        dest: /etc/sysctl.conf
+        state: absent
+        regexp: '\s*(fs\.file-max)\s*=\s*(.*)'
+    - name: add fs.file-max value
+      lineinfile:
+        dest: /etc/sysctl.conf
+        line: 'fs.file-max=500001'
+        backup: yes
